@@ -1,0 +1,8 @@
+name: ServerAPI
+version: '${project.version}'
+main: de.maxbossing.serverapi.ServerAPI
+api-version: 1.19
+prefix: ServerAPI
+authors: [ Max ]
+description: ServerAPI for standardised programming
+website: maxbossing.de, redstonegames.ch

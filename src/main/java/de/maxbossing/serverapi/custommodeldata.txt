@@ -1,0 +1,14 @@
+Gray Stained Glass Pane:
+    1 | placeholder
+Arrow:
+    1 | Next Page
+    2 | Page Back
+Spectral Arrow:
+    1 | First Page
+    2 | Last Page
+Bedrock:
+    1 | Coming Soon
+Spruce Door:
+    1 | Back
+Barrier:
+    1 | Exit
