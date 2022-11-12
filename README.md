@@ -18,6 +18,7 @@ Planned Features:
 + Skull Creation
 + Banner Creation
 + GUI creation
++ Config Managing
 + Bungeecord Support
 + ...
 
