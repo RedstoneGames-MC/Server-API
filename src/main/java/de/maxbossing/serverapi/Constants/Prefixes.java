@@ -1,5 +1,7 @@
 package de.maxbossing.serverapi.Constants;
 
+import de.maxbossing.serverapi.ItemUtils.BannerBuilder;
+
 public class Prefixes {
 
     /*
@@ -37,6 +39,10 @@ public class Prefixes {
      */
     public static final String INFO() {return "§6§lRedstoneGames §r§eINFO §0» §r";}
 
+    /*
+    Debug Prefix. only used for Runtime debugging
+     */
+    public static final String DEBUG() {return "§6§lRedstoneGames §r§7DEBUG §0» §r";}
 
 
 }
