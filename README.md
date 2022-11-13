@@ -13,10 +13,10 @@ This API standardizes:
 + [String Manipulation](https://github.com/RedstoneGames-MC/Server-API/wiki/StringUtils)
 + [Prefixes](https://github.com/RedstoneGames-MC/Server-API/wiki/Prefixes)
 + [Standard Items](https://github.com/RedstoneGames-MC/Server-API/wiki/Items) + [Keys](https://github.com/RedstoneGames-MC/Server-API/wiki/NameSpacedkeys)
++ [Banner Creation](https://github.com/RedstoneGames-MC/Server-API/wiki/BannerBuilder)
 
 Planned Features:
 + Skull Creation
-+ Banner Creation
 + GUI creation
 + Config Managing
 + Bungeecord Support
