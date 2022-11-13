@@ -1,5 +1,6 @@
 package de.maxbossing.serverapi;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ServerAPI extends JavaPlugin {
@@ -9,12 +10,12 @@ public final class ServerAPI extends JavaPlugin {
     @Override
     public void onEnable() {
     instance = this;
-
+    Bukkit.getServer().getConsoleSender().sendMessage("[ServerAPI] ServerAPI Loaded");
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        getServer().getConsoleSender().sendMessage("[ServerAPI] ServerAPI Unloaded");
     }
 
 
