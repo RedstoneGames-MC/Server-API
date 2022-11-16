@@ -31,7 +31,7 @@ public class SkullBuilder {
     /**
      * Creates a player skull, should work in both legacy and new Bukkit APIs.
      */
-    public static ItemStack createSkull() {
+    private static ItemStack createSkull() {
         checkLegacy();
 
         try {
@@ -48,8 +48,8 @@ public class SkullBuilder {
      * @return The head of the Player.
      * @deprecated names don't make for good identifiers.
      */
-    public static ItemStack itemFromName(String name) {
-        return itemWithName(createSkull(), name);
+    public static ItemStack createSkullByName(String name) {
+        return changeSkullByName(createSkull(), name);
     }
 
     /**
@@ -58,8 +58,8 @@ public class SkullBuilder {
      * @param id The Player's UUID.
      * @return The head of the Player.
      */
-    public static ItemStack itemFromUuid(UUID id) {
-        return itemWithUuid(createSkull(), id);
+    public static ItemStack createSkullByUUID(UUID id) {
+        return changeSkullByUUID(createSkull(), id);
     }
 
     /**
@@ -68,8 +68,8 @@ public class SkullBuilder {
      * @param url The Mojang URL.
      * @return The head of the Player.
      */
-    public static ItemStack itemFromUrl(String url) {
-        return itemWithUrl(createSkull(), url);
+    public static ItemStack createSkullByURL(String url) {
+        return changeSkullByURL(createSkull(), url);
     }
 
     /**
@@ -78,8 +78,8 @@ public class SkullBuilder {
      * @param base64 The Base64 string.
      * @return The head of the Player.
      */
-    public static ItemStack itemFromBase64(String base64) {
-        return itemWithBase64(createSkull(), base64);
+    public static ItemStack createSkullByBase64(String base64) {
+        return changeSkullByBase64(createSkull(), base64);
     }
 
     /**
@@ -91,7 +91,7 @@ public class SkullBuilder {
      * @deprecated names don't make for good identifiers.
      */
     @Deprecated
-    public static ItemStack itemWithName(ItemStack item, String name) {
+    public static ItemStack changeSkullByName(ItemStack item, String name) {
         notNull(item, "item");
         notNull(name, "name");
 
@@ -109,7 +109,7 @@ public class SkullBuilder {
      * @param id   The Player's UUID.
      * @return The head of the Player.
      */
-    public static ItemStack itemWithUuid(ItemStack item, UUID id) {
+    public static ItemStack changeSkullByUUID(ItemStack item, UUID id) {
         notNull(item, "item");
         notNull(id, "id");
 
@@ -127,11 +127,11 @@ public class SkullBuilder {
      * @param url  The URL of the Mojang skin.
      * @return The head associated with the URL.
      */
-    public static ItemStack itemWithUrl(ItemStack item, String url) {
+    public static ItemStack changeSkullByURL(ItemStack item, String url) {
         notNull(item, "item");
         notNull(url, "url");
 
-        return itemWithBase64(item, urlToBase64(url));
+        return changeSkullByBase64(item, urlToBase64(url));
     }
 
     /**
@@ -141,7 +141,7 @@ public class SkullBuilder {
      * @param base64 The base64 string containing the texture.
      * @return The head with a custom texture.
      */
-    public static ItemStack itemWithBase64(ItemStack item, String base64) {
+    public static ItemStack changeSkullByBase64(ItemStack item, String base64) {
         notNull(item, "item");
         notNull(base64, "base64");
 
@@ -155,80 +155,6 @@ public class SkullBuilder {
         return item;
     }
 
-    /**
-     * Sets the block to a skull with the given name.
-     *
-     * @param block The block to set.
-     * @param name  The player to set it to.
-     * @deprecated names don't make for good identifiers.
-     */
-    @Deprecated
-    public static void blockWithName(Block block, String name) {
-        notNull(block, "block");
-        notNull(name, "name");
-
-        Skull state = (Skull) block.getState();
-        state.setOwningPlayer(Bukkit.getOfflinePlayer(name));
-        state.update(false, false);
-    }
-
-    /**
-     * Sets the block to a skull with the given UUID.
-     *
-     * @param block The block to set.
-     * @param id    The player to set it to.
-     */
-    public static void blockWithUuid(Block block, UUID id) {
-        notNull(block, "block");
-        notNull(id, "id");
-
-        setToSkull(block);
-        Skull state = (Skull) block.getState();
-        state.setOwningPlayer(Bukkit.getOfflinePlayer(id));
-        state.update(false, false);
-    }
-
-    /**
-     * Sets the block to a skull with the skin found at the provided mojang URL.
-     *
-     * @param block The block to set.
-     * @param url   The mojang URL to set it to use.
-     */
-    public static void blockWithUrl(Block block, String url) {
-        notNull(block, "block");
-        notNull(url, "url");
-
-        blockWithBase64(block, urlToBase64(url));
-    }
-
-    /**
-     * Sets the block to a skull with the skin for the base64 string.
-     *
-     * @param block  The block to set.
-     * @param base64 The base64 to set it to use.
-     */
-    public static void blockWithBase64(Block block, String base64) {
-        notNull(block, "block");
-        notNull(base64, "base64");
-
-        setToSkull(block);
-        Skull state = (Skull) block.getState();
-        mutateBlockState(state, base64);
-        state.update(false, false);
-    }
-
-    private static void setToSkull(Block block) {
-        checkLegacy();
-
-        try {
-            block.setType(Material.valueOf("PLAYER_HEAD"), false);
-        } catch (IllegalArgumentException e) {
-            block.setType(Material.valueOf("SKULL"), false);
-            Skull state = (Skull) block.getState();
-            state.setSkullType(SkullType.PLAYER);
-            state.update(false, false);
-        }
-    }
 
     private static void notNull(Object o, String name) {
         if (o == null) {
