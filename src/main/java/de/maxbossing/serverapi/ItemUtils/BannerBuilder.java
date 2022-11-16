@@ -118,7 +118,7 @@ public class BannerBuilder {
     Removes all Patterns of banner
 
     BannerBuilder().removePattern();
- */
+    */
     public BannerBuilder removePattern() {
         for (Pattern pattern : bannerMeta.getPatterns()) {
             bannerMeta.removePattern(bannerMeta.getPatterns().indexOf(pattern));
