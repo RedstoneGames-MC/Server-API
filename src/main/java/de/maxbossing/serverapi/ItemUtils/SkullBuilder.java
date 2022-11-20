@@ -90,7 +90,6 @@ public class SkullBuilder {
      * @return The head of the Player.
      * @deprecated names don't make for good identifiers.
      */
-    @Deprecated
     public static ItemStack changeSkullByName(ItemStack item, String name) {
         notNull(item, "item");
         notNull(name, "name");
